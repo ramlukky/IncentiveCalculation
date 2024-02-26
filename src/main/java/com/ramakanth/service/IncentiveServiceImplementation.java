@@ -8,7 +8,7 @@ import com.ramakanth.entity.Incentive;
 public class IncentiveServiceImplementation implements IncentiveService {
 	
 	private Double netBillRate;
-	private Double volumeRebate=0.06;
+	private Double volumeRebate=0.00;
 
 	private Double billRate;
 	private  Double payRate;
@@ -32,7 +32,7 @@ public class IncentiveServiceImplementation implements IncentiveService {
 			payRollType=incentive.getPayRollType();
 			payRate=incentive.getPayRate();
 			if(payRollType.equalsIgnoreCase("w2"))payRate=payRate*1.18;
-			else payRate=payRate*1.04;
+			if(payRollType.equalsIgnoreCase("c2c"))payRate=payRate*1.04;
 			margin=netBillRate-payRate;
 			totalWorkHours=incentive.getTotalWorkHours();
 			x=margin*totalWorkHours;
